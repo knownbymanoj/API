@@ -13,7 +13,19 @@ def test1():
         a = request.json['num1']
         b = request.json['num2']
         result = a + b 
-        return jsonify(str(result))
+        return jsonify(str(result)) # convert your result to string and then return the str in json file.
+
+
+# We are calling the funciton by url and not by function name as a decorator.API is language inpedendent.
+
+@app.route('/abc/man', methods=['GET', 'POST'])# Using app object we are able to access all class methods(ex:route) of class.
+def test2():
+    if (request.method == 'POST'):
+        a = request.json['num1']
+        b = request.json['num2']
+        result = a * b 
+        return jsonify(str(result)) # convert your result to string and then return the str in json file.
+    
 
 if __name__ == '__main__':
     app.run()
